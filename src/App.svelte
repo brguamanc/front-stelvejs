@@ -1,0 +1,206 @@
+<script>
+  let buses=[];
+  let datosBuses={
+    viaje_id:"",
+    empresa:"",
+    destino:"",
+    origen:"",
+    horaSalida:"",
+    horaLlegada:""
+  };
+let mostrarBuses=()=>{
+ fetch('https://api-rest-mongo.vercel.app/api/buses')
+  .then(respuesta=>respuesta.json())
+  .then((datosRespuesta)=>{
+    buses=datosRespuesta;
+    datosBuses={
+      viaje_id:"",
+      empresa:"",
+      destino:"",
+      origen:"",
+      horaSalida:"",
+      horaLlegada:""
+    }
+    console.log(buses)
+  }).catch(console.log)
+}
+
+let agregarBus=()=>{
+  const nuevoBus={
+    viaje_id:datosBuses.viaje_id,
+    empresa:datosBuses.empresa,
+    destino:datosBuses.destino,
+    origen:datosBuses.origen,
+    horaSalida:datosBuses.horaSalida,
+    horaLlegada:datosBuses.horaLlegada
+    
+  }
+
+   fetch('https://api-rest-mongo.vercel.app/api/bus',{
+    headers: {
+            "Content-Type": "application/json"
+          },
+    method:"POST",
+    body:JSON.stringify(nuevoBus)
+   
+  })
+  .then(respuesta=>respuesta.json())
+  
+  .then((datosRespuesta)=>{
+   mostrarBuses();
+   console.log(datosRespuesta)
+  }).catch(console.log)
+}
+
+
+let borrarBus=id=>{
+  
+  fetch('https://api-rest-mongo.vercel.app/api/bus/viaje_id/'+id,{
+    headers: {
+            "Content-Type": "application/json"
+          },
+    method:"DELETE"
+   
+  })
+  .then(respuesta=>respuesta.json())
+  .then((datosRespuesta)=>{
+   mostrarBuses()
+   
+  }).catch(console.log)
+}
+mostrarBuses();
+
+</script>
+
+<div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-header">Buses</div>
+            <div class="card-body">
+              <form action="">
+                <div class="mb-3">
+                  <label for="" class="form-label">Bus Id</label>
+                  <input
+                  bind:value={datosBuses.viaje_id}
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Empresa</label>
+                  <input
+                  bind:value={datosBuses.empresa}
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Destino</label>
+                  <input
+                  bind:value={datosBuses.destino}
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Origen</label>
+                  <input
+                  bind:value={datosBuses.origen}
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Hora salida</label>
+                  <input
+                  bind:value={datosBuses.horaSalida}
+                    type="time"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+               
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Hora llegada</label>
+                  <input
+                  bind:value={datosBuses.horaLlegada}
+                    type="time"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                  
+                </div>
+                <button type="button" class="btn btn-primary"
+                on:click|preventDefault={agregarBus}>Agregar bus</button>
+                <button type="button" class="btn btn-primary">Editar bus</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Bus ID</th>
+                <th>Empresa</th>
+                <th>Destino</th>
+                <th>Origen</th>
+                <th>Hora salida</th>
+                <th>Hora llegada</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {#each buses as bus }
+                
+            
+              <tr>
+                <td>{bus.viaje_id}</td>
+                <td>{bus.empresa}</td>
+                <td>{bus.destino}</td>
+                <td>{bus.origen}</td>
+                <td>{bus.horaSalida}</td>
+                <td>{bus.horaLlegada}</td>
+                <td>
+                  <button
+                  type="submit"
+                  clase="btn btn-danger"
+                  on:click={borrarBus(bus.viaje_id)}
+                  >
+                  Borrar
+                  </button>
+                </td>
+              </tr>
+                {/each}
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
