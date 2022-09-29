@@ -5,8 +5,7 @@
     empresa:"",
     destino:"",
     origen:"",
-    horaSalida:"",
-    horaLlegada:""
+    horaSalida:""
   };
 let mostrarBuses=()=>{
  fetch('https://api-rest-mongo.vercel.app/api/buses')
