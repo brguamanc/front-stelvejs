@@ -18,8 +18,7 @@ let mostrarBuses=()=>{
       empresa:"",
       destino:"",
       origen:"",
-      horaSalida:"",
-      horaLlegada:""
+      horaSalida:""
     }
     console.log(buses)
   }).catch(console.log)
@@ -31,8 +30,7 @@ let agregarBus=()=>{
     empresa:datosBuses.empresa,
     destino:datosBuses.destino,
     origen:datosBuses.origen,
-    horaSalida:datosBuses.horaSalida,
-    horaLlegada:datosBuses.horaLlegada
+    horaSalida:datosBuses.horaSalida
     
   }
 
