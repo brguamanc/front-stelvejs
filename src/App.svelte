@@ -92,6 +92,8 @@ mostrarBuses();
                   />
                  
                 </div>
+                
+           
                 <div class="mb-3">
                   <label for="" class="form-label">Empresa</label>
                   <input
@@ -101,8 +103,18 @@ mostrarBuses();
                     name=""
                     id=""
                     aria-describedby="helpId"
-                    placeholder=""
+                    placeholder="Escoja una empresa"
+                    list="datalistOptions2"
                   />
+                  <datalist id="datalistOptions2">
+                    <option value="Expreso Tulcán"></option>
+                    <option value="Turismo">
+                    <option value="Pullman Carchi">
+                    <option value="Tax Gacela">
+                    <option value="San Cristobal">
+                    <option value="Flota Imbabura">
+                      <option value="Velotax"></option>
+                  </datalist>
                 
                 </div>
                 <div class="mb-3">
@@ -114,8 +126,15 @@ mostrarBuses();
                     name=""
                     id=""
                     aria-describedby="helpId"
-                    placeholder=""
+                    placeholder="Seleccione una ciudad"
+                    list="datalistOptions3"
+                    
                   />
+                    <datalist id="datalistOptions3">
+                    <option value="Tulcán"></option>
+                    <option value="Ibarra"></option>
+                    <option value="Quito"></option>
+                  </datalist>
                  
                 </div>
                 <div class="mb-3">
@@ -127,9 +146,14 @@ mostrarBuses();
                     name=""
                     id=""
                     aria-describedby="helpId"
-                    placeholder=""
+                    placeholder="Seleccione una ciudad"
+                    list="datalistOptions"
                   />
-                 
+                 <datalist id="datalistOptions">
+                    <option value="Tulcán"></option>
+                    <option value="Ibarra"></option>
+                    <option value="Quito"></option>
+                  </datalist>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Hora salida</label>
@@ -144,19 +168,7 @@ mostrarBuses();
                   />
                
                 </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Hora llegada</label>
-                  <input
-                  bind:value={datosBuses.horaLlegada}
-                    type="time"
-                    class="form-control"
-                    name=""
-                    id=""
-                    aria-describedby="helpId"
-                    placeholder=""
-                  />
-                  
-                </div>
+                
                 <button type="button" class="btn btn-primary"
                 on:click|preventDefault={agregarBus}>Agregar bus</button>
                 <button type="button" class="btn btn-primary">Editar bus</button>
@@ -173,7 +185,6 @@ mostrarBuses();
                 <th>Destino</th>
                 <th>Origen</th>
                 <th>Hora salida</th>
-                <th>Hora llegada</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -187,7 +198,6 @@ mostrarBuses();
                 <td>{bus.destino}</td>
                 <td>{bus.origen}</td>
                 <td>{bus.horaSalida}</td>
-                <td>{bus.horaLlegada}</td>
                 <td>
                   <button
                   type="submit"
