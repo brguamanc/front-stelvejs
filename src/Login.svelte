@@ -35,50 +35,10 @@
   </div>
 
 <p>
-   
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Entrar como administrador
-  </button>
+ <Link to="/admin">  
+       <button type="button" class="btn btn-primary">Entrar como admin</button>
+    </Link>
 </p>
-
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-   <form action="">
-    <div class="mb-3">
-                  <label for="" class="form-label">Usuario</label>
-                  <input
-                 
-                  bind:value={datoUsuario.user}                    
-                    type="text"
-                    class="form-control"
-                    name=""
-                    id=""
-                    aria-describedby="helpId"
-                    placeholder=""
-                  />
-                 
-                </div>
-                 <div class="mb-3">
-                  <label for="" class="form-label">Contraseña</label>
-                  <input
-                
-                  bind:value={datoUsuario.pswd}                    
-                    type="password"
-                    class="form-control"
-                    name=""
-                    id=""
-                    aria-describedby="helpId"
-                    placeholder=""
-                  />
-                 
-              </div>
-
-                <button type="button" class="btn btn-primary"
-                on:click|preventDefault={login}>Loguear</button>
-           
-              </form>
-  </div>
-</div>
 
 
 </div>
