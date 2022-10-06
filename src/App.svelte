@@ -1,9 +1,9 @@
 <script>
   import{Router, Route,Link,link}from "svelte-routing";
-  import Login from "./Login.svelte";
-  import Inicio from "./Inicio.svelte";
-  import VistaUsuarios from "./VistaUsuarios.svelte";
-  import LoginAdmin from "./LoginAdmin.svelte";
+  import Login from "./view/Login.svelte";
+  import Inicio from "./view/Inicio.svelte";
+  import VistaUsuarios from "./view/VistaUsuarios.svelte";
+  import LoginAdmin from "./view/LoginAdmin.svelte";
 </script>
 
 <Router>

@@ -1,17 +1,7 @@
 <script>
   import{Link,navigate}from "svelte-routing";
 
-  let datoUsuario={
-    user:"",
-    pswd:""
-  }
-  let login=()=>{
-    if (datoUsuario.user=="admin" && datoUsuario.pswd=="123"){
-        console.log("logueado")
-      navigate("/inicio")
-    }
 
-  }
 </script>
 
 <div class="container">
