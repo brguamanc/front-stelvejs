@@ -71,4 +71,9 @@
       >
     </form>
   </div>
+     <div class="mb-3">
+            <Link to="/">  
+             <button type="button" class="btn btn-primary">Salir</button>
+           </Link>
+          </div>
 </div>

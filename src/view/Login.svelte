@@ -24,11 +24,11 @@
   </div>
   </div>
 
-<p>
+<div class="card text-center">
  <Link to="/admin">  
        <button type="button" class="btn btn-primary">Entrar como admin</button>
     </Link>
-</p>
+ </div>
 
 
 </div>

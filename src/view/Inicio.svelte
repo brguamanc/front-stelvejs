@@ -1,4 +1,6 @@
 <script>
+
+  import{Link,navigate}from "svelte-routing";
   let buses = [];
   let activado = true;
   let datosBuses = {
@@ -102,7 +104,9 @@
       <div class="card">
         <div class="card-header">Buses</div>
         <div class="card-body">
+         
           <form>
+
             <div class="mb-3">
               <label for="" class="form-label">Bus Id</label>
               <input
@@ -171,6 +175,7 @@
               <datalist id="datalistOptions">
                 <option value="Tulcán" />
                 <option value="Ibarra" />
+                 <option value="Ibarra-Mayorista" />
                 <option value="Quito" />
               </datalist>
             </div>
@@ -204,8 +209,15 @@
               class="btn btn-danger"
               on:click|preventDefault={mostrarBuses}>Cancelar</button
             >
+            
           </form>
+          
         </div>
+         <div class="mb-3">
+            <Link to="/">  
+             <button type="button" class="btn btn-primary">Salir</button>
+           </Link>
+          </div>
       </div>
     </div>
     <div class="col-md-7">
