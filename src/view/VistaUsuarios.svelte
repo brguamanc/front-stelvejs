@@ -10,6 +10,26 @@
   let mostrarCiudad = () => {
     const nuevaBusqueda = {
       destino: ciudad.destino,
+    };
+    console.log(nuevaBusqueda.destino)
+    if (nuevaBusqueda.destino != "") {
+      fetch("https://api-rest-mongo.vercel.app/api/bus/destino/"+nuevaBusqueda.destino, {
+      })
+        .then((respuesta) => respuesta.json())
+        .then((datosRespuesta) => {
+          buses = datosRespuesta;
+          if (buses.length == 0) {
+            alert("No hay resultados");
+          }
+        })
+        .catch(console.log);
+    } else {
+      alert("Ingrese una ciudad para buscar");
+    }
+  };
+  let mostrarCiudad2 = () => {
+    const nuevaBusqueda = {
+      destino: ciudad.destino,
       origen: ciudad.origen,
     };
     if (nuevaBusqueda.destino != "" && nuevaBusqueda.origen != "") {
@@ -32,7 +52,6 @@
       alert("Ingrese una ciudad para buscar");
     }
   };
-
   //mostrarBuses();
 </script>
 
@@ -53,29 +72,12 @@
               />
               <datalist id="datalistOptions3">
                 <option value="Tulcán" />
+                <option value="El Ángel" />
                 <option value="Ibarra" />
                 <option value="Quito" />
               </datalist>
             </div>
-              <div class="mb-3">
-              <label for="" class="form-label">Origen</label>
-              <input
-                bind:value={ciudad.origen}
-                type="text"
-                class="form-control"
-                name=""
-                id=""
-                aria-describedby="helpId"
-                placeholder="Seleccione una ciudad"
-                list="datalistOptions"
-              />
-              <datalist id="datalistOptions">
-                <option value="Tulcán" />
-                <option value="Ibarra" />
-                <option value="Ibarra-Mayorista" />
-                <option value="Quito" />
-              </datalist>
-            </div>
+
   
       <button
         type="button"
@@ -90,7 +92,6 @@
       <table class="table ">
         <thead>
           <tr>
-            <th>Bus ID</th>
             <th>Empresa</th>
             <th>Destino</th>
             <th>Origen</th>
@@ -100,7 +101,6 @@
         <tbody>
           {#each buses as bus}
             <tr>
-              <td>{bus.busId}</td>
               <td>{bus.empresa}</td>
               <td>{bus.destino}</td>
               <td>{bus.origen}</td>
